@@ -1,3 +1,6 @@
+const yargs = require("yargs");
+const{hideBin} = require("yargs/helpers")
+
 const albums = require("./albums");
 
 
@@ -28,8 +31,13 @@ case "list":
 }
 }
 
-//  invokeAction({action: "list"})
-// invokeAction({action: "getById", id: 1})
-// invokeAction({action: "add", title: "worm"})
-// invokeAction({action: "updateById", id: "3Qjst9aJVaFwAYCNWkTVX", title: "Ward"})
-invokeAction({action: "removeById", id: "3Qjst9aJVaFwAYCNWkTVX"})
+// //  invokeAction({action: "list"})
+// // invokeAction({action: "getById", id: 1})
+// // invokeAction({action: "add", title: "worm"})
+// // invokeAction({action: "updateById", id: "3Qjst9aJVaFwAYCNWkTVX", title: "Ward"})
+// invokeAction({action: "removeById", id: "3Qjst9aJVaFwAYCNWkTVX"})
+
+const arr = hideBin(process.argv);
+const {argv} = yargs(arr);
+// console.log(argv)
+invokeAction(argv)
