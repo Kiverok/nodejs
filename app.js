@@ -1,5 +1,6 @@
-const yargs = require("yargs");
-const{hideBin} = require("yargs/helpers")
+// const yargs = require("yargs");
+// const{hideBin} = require("yargs/helpers")
+const {program} = require("commander")
 
 const albums = require("./albums");
 
@@ -37,7 +38,17 @@ case "list":
 // // invokeAction({action: "updateById", id: "3Qjst9aJVaFwAYCNWkTVX", title: "Ward"})
 // invokeAction({action: "removeById", id: "3Qjst9aJVaFwAYCNWkTVX"})
 
-const arr = hideBin(process.argv);
-const {argv} = yargs(arr);
-// console.log(argv)
-invokeAction(argv)
+// const arr = hideBin(process.argv);
+// const {argv} = yargs(arr);
+// // console.log(argv)
+// invokeAction(argv)
+
+program
+.option("--action <type>")
+.option("--id <type>")
+.option("--title <type>")
+
+program.parse();
+
+const options = program.opts();
+invokeAction(options)
